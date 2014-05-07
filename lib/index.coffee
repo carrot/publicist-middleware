@@ -1,4 +1,6 @@
 basicAuth = require 'basic-auth'
+minimatch = require 'minimatch'
+_         = require 'lodash'
 
 ###*
  * Configures options and returns a middleware function.
@@ -10,15 +12,26 @@ basicAuth = require 'basic-auth'
  * @return {Function} middleware function
 ###
 
-module.exports = (opts = {}) ->
-  opts =
-    auth: opts.auth
+module.exports = (opts) ->
+  if typeof opts == 'string'
+    match = {'**': opts}
+  else if typeof opts == 'object' and opts.hasOwnProperty('user')
+    match = {'**': opts.user + ':' + opts.pass}
+  else
+    match = opts
 
   return (req, res, next) ->
-    if not opts.auth then return next()
+    if not opts then return next()
+    _.keys(match).some (matcher) =>
+      @match = if minimatch(req.url, matcher) then matcher else false
 
-    if JSON.stringify(basicAuth(req)) == format_auth_option(opts.auth)
-      next()
+    # the current route did not match a globstar, carry on
+    if not @match then return next()
+
+    # check if auth_headers are accurate, otherwise prompt authentication
+    auth_headers = JSON.stringify(basicAuth(req))
+    if auth_headers == format_auth_option(match[@match])
+      return next()
     else
       res.statusCode = 401
       res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"')
