@@ -1,0 +1,34 @@
+{
+  "name": "publicist-middleware",
+  "version": "0.0.0",
+  "author": "Carrot Creative <dev@carrotcreative.com>",
+  "description": "locking static sites down since 1888",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kylemac/publicist-middleware.git"
+  },
+  "main": "lib",
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "chai-http": "*",
+    "connect": "*",
+    "coffeelint": "*",
+    "istanbul": "*",
+    "mocha-lcov-reporter": "*",
+    "coffee-script": "1.7.x",
+    "serve-static": "~1.1.0"
+  },
+  "scripts": {
+    "test": "npm run lint && mocha",
+    "lint": "find lib/ -name '*.coffee' | xargs coffeelint",
+    "coverage": "make build; istanbul cover _mocha --report html -- -R spec && open coverage/index.html && make unbuild"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "basic-auth": "0.0.1"
+  }
+}
