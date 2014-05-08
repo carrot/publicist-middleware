@@ -1,6 +1,7 @@
 # Publicist Middleware
 
-[![npm](http://img.shields.io/npm/v/publicist-middleware.svg?style=flat)](https://badge.fury.io/js/publicist-middleware) [![tests](http://img.shields.io/travis/carrot/publicist-middleware/master.svg?style=flat)](https://travis-ci.org/carrot/publicist-middleware) [![dependencies](http://img.shields.io/gemnasium/carrot/publicist-middleware.svg?style=flat)](https://david-dm.org/carrot/publicist-middleware)
+[![npm](http://img.shields.io/npm/v/publicist-middleware.svg?style=flat)](https://badge.fury.io/js/publicist-middleware) [![tests](http://img.shields.io/travis/carrot/publicist-middleware/master.svg?style=flat)](https://travis-ci.org/carrot/publicist-middleware)
+[![coverage](http://img.shields.io/coveralls/carrot/publicist-middleware.svg?style=flat)](https://coveralls.io/r/carrot/publicist-middleware) [![dependencies](http://img.shields.io/gemnasium/carrot/publicist-middleware.svg?style=flat)](https://david-dm.org/carrot/publicist-middleware)
 
 locking static sites down since 1888
 
