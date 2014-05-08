@@ -1,6 +1,6 @@
 {
   "name": "publicist-middleware",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Carrot Creative <dev@carrotcreative.com>",
   "description": "locking static sites down since 1888",
   "license": "MIT",
