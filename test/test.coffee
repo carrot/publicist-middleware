@@ -1,4 +1,4 @@
-connect     = require 'connect'
+connect = require 'connect'
 
 before ->
   @path = path.join(base_path, 'basic')
@@ -13,7 +13,7 @@ describe 'basic', ->
             .use(publicist())
             .use(connect.static(@path))
 
-    chai.request(@app).get('/index.html').res (res) ->
+    chai.request(@app).get('/index.html').end (res) ->
       res.should.have.status(200)
       res.should.be.html
       res.text.should.equal("<p>hello world!</p>\n")
@@ -28,7 +28,7 @@ describe 'string option', ->
             .use(publicist('user:pass'))
             .use(connect.static(@path))
 
-    chai.request(@app).get('/index.html').res (res) ->
+    chai.request(@app).get('/index.html').end (res) ->
       res.should.have.status(401)
       done()
 
@@ -39,7 +39,7 @@ describe 'string option', ->
             .use(publicist('user:pass'))
             .use(connect.static(@path))
 
-    chai.request(@app).get('/index.html').res (res) ->
+    chai.request(@app).get('/index.html').end (res) ->
       res.should.have.status(200)
       res.should.be.html
       res.text.should.equal("<p>hello world!</p>\n")
@@ -54,7 +54,7 @@ describe 'user/pass object', ->
             .use(publicist(user: 'foo', pass: 'bar'))
             .use(connect.static(@path))
 
-    chai.request(@app).get('/index.html').res (res) ->
+    chai.request(@app).get('/index.html').end (res) ->
       res.should.have.status(401)
       done()
 
@@ -65,7 +65,7 @@ describe 'user/pass object', ->
             .use(publicist(user: 'foo', pass: 'bar'))
             .use(connect.static(@path))
 
-    chai.request(@app).get('/index.html').res (res) ->
+    chai.request(@app).get('/index.html').end (res) ->
       res.should.have.status(200)
       res.should.be.html
       res.text.should.equal("<p>hello world!</p>\n")
@@ -81,7 +81,7 @@ describe 'route matching', ->
             ))
             .use(connect.static(@path))
 
-    chai.request(@app).get('/protected/index.html').res (res) ->
+    chai.request(@app).get('/protected/index.html').end (res) ->
       res.should.have.status(401)
       done()
 
@@ -92,7 +92,7 @@ describe 'route matching', ->
             .use(publicist('/protected/**': 'foo:bar'))
             .use(connect.static(@path))
 
-    chai.request(@app).get('/protected/index.html').res (res) ->
+    chai.request(@app).get('/protected/index.html').end (res) ->
       res.should.have.status(200)
       res.should.be.html
       res.text.should.equal("<p>protected index</p>\n")
@@ -106,7 +106,7 @@ describe 'route matching', ->
             ))
             .use(connect.static(@path))
 
-    chai.request(@app).get('/nested/index.html').res (res) ->
+    chai.request(@app).get('/nested/index.html').end (res) ->
       res.should.have.status(200)
       res.should.be.html
       res.text.should.equal("<p>nested index</p>\n")

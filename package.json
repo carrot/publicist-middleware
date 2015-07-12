@@ -9,16 +9,22 @@
     "url": "https://github.com/kylemac/publicist-middleware.git"
   },
   "main": "lib",
+  "dependencies": {
+    "basic-auth": "1.x",
+    "minimatch": "2.x",
+    "lodash": "2.x"
+  },
   "devDependencies": {
-    "mocha": "*",
-    "chai": "*",
-    "chai-http": "*",
-    "connect": "*",
-    "coffeelint": "*",
-    "istanbul": "*",
-    "mocha-lcov-reporter": "*",
-    "coffee-script": "1.7.x",
-    "serve-static": "~1.1.0"
+    "mocha": "2.x",
+    "chai": "3.x",
+    "chai-http": "1.x",
+    "connect": "2.x",
+    "coffeelint": "1.x",
+    "coveralls": "2.x",
+    "istanbul": "0.3.x",
+    "mocha-lcov-reporter": "0.0.2",
+    "coffee-script": "1.9.x",
+    "serve-static": "1.x"
   },
   "scripts": {
     "test": "npm run lint && mocha",
@@ -28,11 +34,5 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "dependencies": {
-    "basic-auth": "0.0.1",
-    "minimatch": "~0.2.14",
-    "lodash": "~2.4.1",
-    "coveralls": "*"
   }
 }
